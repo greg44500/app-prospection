@@ -71,7 +71,10 @@ const planSchema = new Schema({
 }, { timestamps: true })
 
 planSchema.plugin(applySoftDelete);
-planSchema.plugin(applySlug);
+companySchema.plugin(applySlug, {
+    sourceField: 'name',
+    targetField: 'slug',
+});
 
 export default mongoose.model('Plan', planSchema);
 

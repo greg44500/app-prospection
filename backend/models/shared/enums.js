@@ -244,6 +244,63 @@ export const PROSPECT_SOURCE = [
     'import',
 ];
 
+// ==============================
+// CRM / COMPANY
+// ==============================
+
+export const COMPANY_TYPE = [
+    'agency',
+    'notary_office',
+    'broker',
+    'artisan',
+    'diagnostician',
+    'partner',
+    'real_estate_company',
+    'other',
+];
+
+export const COMPANY_STATUS = [
+    'active',
+    'inactive',
+    'archived',
+];
+
+
+// ==============================
+// CRM / CONTACT
+// ==============================
+
+export const CONTACT_STATUS = [
+    'new',
+    'active',
+    'to_follow_up',
+    'inactive',
+    'archived',
+];
+
+export const CONTACT_SOURCE = [
+    'manual',
+    'prospection',
+    'hotlist',
+    'import',
+    'referral',
+    'network',
+    'dpe',
+];
+
+export const CONTACT_ROLE = [
+    'owner',
+    'buyer',
+    'seller',
+    'investor',
+    'partner',
+    'notary',
+    'broker',
+    'artisan',
+    'diagnostician',
+    'other',
+];
+
 
 // ==============================
 // COMMUNICATION
@@ -270,7 +327,7 @@ export const NOTIFICATION_TYPE = [
 
 
 // ==============================
-// SYSTEM
+// SYSTEM / AUDIT
 // ==============================
 
 export const USER_ACTIVITY_TYPE = [

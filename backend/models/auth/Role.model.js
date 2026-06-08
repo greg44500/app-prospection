@@ -40,7 +40,10 @@ const roleSchema = new Schema({
 
 roleSchema.index({ organization: 1, slug: 1 }, { unique: true });
 roleSchema.plugin(applySoftDelete);
-roleSchema.plugin(applySlug);
+companySchema.plugin(applySlug, {
+    sourceField: 'name',
+    targetField: 'slug',
+});
 
 export default mongoose.model('Role', roleSchema)
 

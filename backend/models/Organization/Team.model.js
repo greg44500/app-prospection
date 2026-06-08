@@ -40,6 +40,9 @@ const teamSchema = new Schema({
 
 teamSchema.index({ organization: 1, slug: 1 }, { unique: true });
 teamSchema.plugin(applySoftDelete);
-teamSchema.plugin(applySlug);
+companySchema.plugin(applySlug, {
+    sourceField: 'name',
+    targetField: 'slug',
+});
 
 export default mongoose.model('Team', teamSchema)

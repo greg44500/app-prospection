@@ -53,6 +53,9 @@ const organizationSchema = new Schema({
 }, { timestamps: true })
 
 organizationSchema.plugin(applySoftDelete);
-organizationSchema.plugin(applySlug);
+companySchema.plugin(applySlug, {
+    sourceField: 'name',
+    targetField: 'slug',
+});
 
 export default mongoose.model('Organization', organizationSchema)
