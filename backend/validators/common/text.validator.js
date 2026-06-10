@@ -48,6 +48,14 @@ export const phoneSchema = z
 export const websiteSchema = z
     .url();
 
+export const planUserSchema = z
+    .number().int().positive();
+
+export const planMapPointLimitSchema = z
+    .number().int().positive().default(1000);
+
+export const maxCampaignSchema = z
+    .number().int().positive().default(5);
 
 export const optionalPhoneSchema = phoneSchema.optional();
 
