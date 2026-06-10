@@ -1,12 +1,12 @@
 // Centraliser les règles de texte réutilisables :
 
-    // nom
-    // titre
-    // description
-    // commentaire
-    // email
-    // téléphone
-    // slug
+// nom
+// titre
+// description
+// commentaire
+// email
+// téléphone
+// slug
 
 import { z } from "zod";
 
@@ -45,7 +45,14 @@ export const phoneSchema = z
     .min(6, "Phone number is too short.")
     .max(11, "Phone number is too long.");
 
+export const websiteSchema = z
+    .url();
+
+
 export const optionalPhoneSchema = phoneSchema.optional();
+
+export const metadataSchema = z
+    .record(z.string(), z.unknown()).optional();
 
 export const slugSchema = z
     .string()

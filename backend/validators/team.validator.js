@@ -15,7 +15,7 @@ import {
 export const createTeamSchema = {
     body: z.object({
         organization: objectIdSchema,
-        name: requiredStringSchema.max(120),
+        name: shortTextSchema,
         description: shortTextSchema.optional(),
         slug: optionalSlugSchema,
     }),
@@ -25,7 +25,7 @@ export const updateTeamSchema = {
     params: paramsIdSchema,
 
     body: z.object({
-        name: requiredStringSchema.max(120).optional(),
+        name: shortTextSchema,
         description: shortTextSchema.optional(),
         slug: optionalSlugSchema,
     }),

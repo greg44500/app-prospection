@@ -11,6 +11,7 @@ import {
     emailSchema,
     optionalPhoneSchema,
     requiredStringSchema,
+    shortTextSchema,
 } from "./common/text.validator";
 
 export const userIdParamSchema = {
@@ -19,8 +20,8 @@ export const userIdParamSchema = {
 
 export const updateUserProfileSchema = {
     body: z.object({
-        firstName: requiredStringSchema.max(80).optional(),
-        lastName: requiredStringSchema.max(80).optional(),
+        firstName: shortTextSchema.optional(),
+        lastName: shortTextSchema.optional(),
         email: emailSchema.optional(),
         phone: optionalPhoneSchema,
     }),

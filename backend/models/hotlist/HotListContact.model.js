@@ -35,7 +35,7 @@ const hotListContactSchema = new Schema(
             trim: true,
         },
 
-        displayName: {
+        fullName: {
             type: String,
             required: true,
             trim: true,
@@ -49,6 +49,10 @@ const hotListContactSchema = new Schema(
         },
 
         phone: {
+            type: String,
+            trim: true,
+        },
+        mobile: {
             type: String,
             trim: true,
         },
