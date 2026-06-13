@@ -7,6 +7,9 @@ import rateLimitMiddleware from 'express-rate-limit'
 import cookieParser from 'cookie-parser'
 import helmet from 'helmet'
 
+// Important pour Render / proxy
+// app.set('trust proxy', 1); 
+//Sinon Express peut mal identifier l’IP réelle du client.
 
 
 const app = express()
