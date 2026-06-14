@@ -1,41 +1,26 @@
-import { ZodError } from 'zod';
-
 import AppError from '../utils/AppError.js';
 
-const validate = (
-    schema,
-    source = 'body'
-) => {
-    return async (req, res, next) => {
-        try {
-            const validatedData =
-                await schema.parseAsync(
-                    req[source]
-                );
+export const validate = (schema) => (req, res, next) => {
+    const validatedData = {};
 
-            req[source] = validatedData;
+    for (const key of ['body', 'params', 'query']) {
+        if (!schema[key]) continue;
 
-            next();
+        const result = schema[key].safeParse(req[key]);
 
-        } catch (error) {
+        if (!result.success) {
+            const errors = result.error.issues.map((issue) => ({
+                field: `${key}.${issue.path.join('.')}`,
+                message: issue.message,
+            }));
 
-            if (error instanceof ZodError) {
-
-                return next(
-                    new AppError(
-                        'Validation failed.',
-                        400,
-                        {
-                            errors: error.issues,
-                        }
-                    )
-                );
-
-            }
-
-            next(error);
+            return next(new AppError('Validation error.', 400, errors));
         }
-    };
-};
 
-export default validate;
+        validatedData[key] = result.data;
+    }
+
+    req.validated = validatedData;
+
+    return next();
+};

@@ -34,7 +34,7 @@ const refreshTokenSchema = new Schema({
 },
     { timestamps: true })
 
-refreshTokenSchema.index({ user: 1, familId: 1 })
+refreshTokenSchema.index({ user: 1, familyId: 1 })
 refreshTokenSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 0 })
 
 export default mongoose.model('RefreshToken', refreshTokenSchema)

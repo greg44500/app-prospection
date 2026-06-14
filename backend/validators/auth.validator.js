@@ -10,7 +10,7 @@ import { emailSchema, requiredStringSchema } from './common/text.validator';
 export const registerSchema = {
     body: z.object({
         firstName: requiredStringSchema.max(80),
-        lastName: requiredStringSchema(80),
+        lastName: requiredStringSchema.max(80),
         email: emailSchema,
         password: z
             .string()

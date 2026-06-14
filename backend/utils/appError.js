@@ -2,7 +2,7 @@
 class AppError extends Error {
     constructor(message, statusCode) {
         super(message);//Appelle le constructeur et initialise err.message
-        this.statusCode - statusCode;// Stocke le status (401,402,403,422,500...)
+        this.statusCode = statusCode;// Stocke le status (401,402,403,422,500...)
         this.status =
             `${statusCode}`.startsWith('4')
                 ? 'fail'
@@ -10,7 +10,7 @@ class AppError extends Error {
 
         this.isOperational = true; // Distingue les erreurs métier - Gestion avec le errorHandler
 
-        Error.captureStackTrace(thisthis,
+        Error.captureStackTrace(this,
             this.constructor // Facilite la localisation de l'erreur
         );
 

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import env from '../src/env.js'
 
-const generateAccessToken = (user) => {
+const signAccessToken = (user) => {
     return jwt.sign({
         userId: user._id.toString(),
         organizationId: user.organization?.toString(),
@@ -10,7 +10,7 @@ const generateAccessToken = (user) => {
         { expiresIn: env.JWT_ACCESS_EXPIRES_IN })
 }
 
-const generateRefreshToken = (user) => {
+const signRefreshToken = (user) => {
     return jwt.sign(
         {
             userId: user._id.toString(),
@@ -38,8 +38,8 @@ const verifyRefreshToken = (token) => {
 };
 
 export {
-    generateAccessToken,
-    generateRefreshToken,
+    signAccessToken,
+    signRefreshToken,
     verifyAccessToken,
     verifyRefreshToken,
 };
